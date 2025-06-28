@@ -62,6 +62,7 @@ defmodule CivicFlux.MixProject do
       {:eventstore, "~> 1.4.8"},
       {:commanded, "~> 1.4"},
       {:commanded_eventstore_adapter, "~> 1.3"},
+      {:commanded_ecto_projections, "~> 1.4"},
       {:broadway, "~> 1.2.1"},
 
       # only dev and tests
