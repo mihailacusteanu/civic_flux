@@ -23,6 +23,6 @@ defmodule CivicFlux.Domain.Aggregates.Issue do
   def execute(%Issue{}, %ReportIssue{}), do: {:error, :already_reported}
 
   def apply(%Issue{} = state, %IssueReported{id: id, description: desc, location: loc}) do
-    %Issue{state | id: id, description: desc, location: loc, status: "deschis"}
+    %Issue{state | id: id, description: desc, location: loc, status: "in_progress"}
   end
 end
