@@ -31,7 +31,6 @@ config :civic_flux, CivicFlux.EventStore,
   hostname: "localhost",
   pool_size: 1
 
-
 config :civic_flux, CivicFlux.Repo,
   username: "postgres",
   password: "postgres",
