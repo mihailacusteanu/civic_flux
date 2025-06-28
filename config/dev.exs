@@ -72,11 +72,3 @@ config :phoenix_live_view,
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
-
-config :civic_flux, CivicFlux.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "civic_flux_dev",
-  hostname: "localhost",
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
