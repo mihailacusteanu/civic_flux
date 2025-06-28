@@ -17,7 +17,9 @@ defmodule CivicFlux.Application do
       # {CivicFlux.Worker, arg},
       # Start to serve requests, typically the last entry
       CivicFluxWeb.Endpoint,
-      CivicFlux.App
+      CivicFlux.App,
+      CivicFlux.Repo,
+
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

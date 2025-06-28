@@ -30,3 +30,11 @@ config :civic_flux, CivicFlux.EventStore,
   database: "civic_flux_eventstore_test",
   hostname: "localhost",
   pool_size: 1
+
+
+config :civic_flux, CivicFlux.Repo,
+  username: "postgres",
+  password: "postgres",
+  database: "civic_flux_test",
+  hostname: "localhost",
+  pool: Ecto.Adapters.SQL.Sandbox

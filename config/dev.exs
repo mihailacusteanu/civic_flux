@@ -80,3 +80,11 @@ config :civic_flux, CivicFlux.EventStore,
   password: "postgres",
   database: "civic_flux_eventstore_dev",
   hostname: "localhost"
+
+config :civic_flux, CivicFlux.Repo,
+  username: "postgres",
+  password: "postgres",
+  database: "civic_flux_dev",
+  hostname: "localhost",
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
