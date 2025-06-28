@@ -63,3 +63,14 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
+
+
+config :eventstore, EventStore.Storage,
+  serializer: Commanded.Serialization.JsonSerializer,
+  username: "postgres",
+  password: "postgres",
+  database: "civic_flux_eventstore",
+  hostname: "localhost"
+
+config :commanded,
+  event_store_adapter: Commanded.EventStore.Adapters.EventStore
