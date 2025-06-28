@@ -19,7 +19,7 @@ defmodule CivicFlux.Application do
       CivicFluxWeb.Endpoint,
       CivicFlux.App,
       CivicFlux.Repo,
-
+      CivicFlux.Projectors.IssueProjector
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
