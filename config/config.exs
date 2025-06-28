@@ -6,7 +6,6 @@
 # General application configuration
 import Config
 
-
 # Configures the endpoint
 config :civic_flux, CivicFluxWeb.Endpoint,
   url: [host: "localhost"],
@@ -77,7 +76,6 @@ config :civic_flux, CivicFlux.App,
     event_store: CivicFlux.EventStore
   ],
   pubsub: :local
-
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
