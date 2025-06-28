@@ -14,6 +14,8 @@ defmodule CivicFlux.Domain.Aggregates.Issue do
   alias CivicFlux.Domain.Commands.ReportIssue
   alias CivicFlux.Domain.Events.IssueReported
 
+  def execute(%Issue{id: nil}, %ReportIssue{id: nil}), do: {:error, :invalid_id}
+
   def execute(%Issue{id: nil}, %ReportIssue{id: id, description: desc, location: loc}) do
     {:ok, [%IssueReported{id: id, description: desc, location: loc}]}
   end
