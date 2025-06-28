@@ -53,7 +53,16 @@ defmodule CivicFlux.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+
+      # CQRS and Event Sourcing
+      {:ecto_sql, "~> 3.11"},
+      {:postgrex, "~> 0.17.5"},
+      {:geo_postgis, "~> 3.7.1"},
+      {:eventstore, "~> 1.4.8"},
+      {:commanded, "~> 1.4"},
+      {:commanded_eventstore_adapter, "~> 1.3"},
+      {:broadway, "~> 1.2.1"}
     ]
   end
 
