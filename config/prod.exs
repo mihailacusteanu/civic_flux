@@ -19,3 +19,11 @@ config :logger, level: :info
 
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.
+
+# EventStore config (Commanded)
+config :civic_flux, CivicFlux.EventStore,
+  serializer: Commanded.Serialization.JsonSerializer,
+  username: "postgres",
+  password: "postgres",
+  database: "civic_flux_eventstore_prod",
+  hostname: "localhost"

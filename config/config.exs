@@ -60,13 +60,6 @@ config :civic_flux,
   generators: [timestamp_type: :utc_datetime],
   ecto_repos: [CivicFlux.Repo]
 
-# EventStore config (Commanded)
-config :civic_flux, CivicFlux.EventStore,
-  serializer: Commanded.Serialization.JsonSerializer,
-  username: "postgres",
-  password: "postgres",
-  database: "civic_flux_eventstore",
-  hostname: "localhost"
 
 config :civic_flux, event_stores: [CivicFlux.EventStore]
 
