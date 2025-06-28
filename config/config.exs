@@ -60,7 +60,6 @@ config :civic_flux,
   generators: [timestamp_type: :utc_datetime],
   ecto_repos: [CivicFlux.Repo]
 
-
 config :civic_flux, event_stores: [CivicFlux.EventStore]
 
 config :civic_flux, CivicFlux.App,

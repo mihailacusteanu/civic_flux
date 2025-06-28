@@ -4,7 +4,7 @@ defmodule CivicFlux.Router do
   alias CivicFlux.Domain.Aggregates.Issue
   alias CivicFlux.Domain.Commands.ReportIssue
 
-  identify Issue, by: :id, prefix: "issue-"
+  identify(Issue, by: :id, prefix: "issue-")
 
-  dispatch [ReportIssue], to: Issue
+  dispatch([ReportIssue], to: Issue)
 end

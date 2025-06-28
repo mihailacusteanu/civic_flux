@@ -4,5 +4,5 @@ defmodule CivicFlux.App do
   """
   use Commanded.Application, otp_app: :civic_flux
 
-  router CivicFlux.Router
+  router(CivicFlux.Router)
 end
