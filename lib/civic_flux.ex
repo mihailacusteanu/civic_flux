@@ -1,9 +1,7 @@
 defmodule CivicFlux do
   @moduledoc """
-  CivicFlux keeps the contexts that define your domain
-  and business logic.
-
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
+  The CivicFlux application serves as the entry point for the Commanded event-sourced system.
   """
+  use Commanded.Application, otp_app: :civic_flux
+
 end

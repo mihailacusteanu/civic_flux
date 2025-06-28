@@ -16,7 +16,8 @@ defmodule CivicFlux.Application do
       # Start a worker by calling: CivicFlux.Worker.start_link(arg)
       # {CivicFlux.Worker, arg},
       # Start to serve requests, typically the last entry
-      CivicFluxWeb.Endpoint
+      CivicFluxWeb.Endpoint,
+      CivicFlux
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

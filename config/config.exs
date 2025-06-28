@@ -9,7 +9,13 @@ import Config
 config :civic_flux,
   generators: [timestamp_type: :utc_datetime],
   ecto_repos: [CivicFlux.Repo],
-  event_stores: [CivicFlux.EventStore]
+  event_store: CivicFlux.EventStore
+
+config :civic_flux, CivicFlux,
+  event_store: [
+    adapter: Commanded.EventStore.Adapters.EventStore,
+    event_store: CivicFlux.EventStore
+  ]
 
 # Configures the endpoint
 config :civic_flux, CivicFluxWeb.Endpoint,
