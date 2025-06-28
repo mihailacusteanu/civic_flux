@@ -62,7 +62,16 @@ defmodule CivicFlux.MixProject do
       {:eventstore, "~> 1.4.8"},
       {:commanded, "~> 1.4"},
       {:commanded_eventstore_adapter, "~> 1.3"},
-      {:broadway, "~> 1.2.1"}
+      {:broadway, "~> 1.2.1"},
+
+      # only dev and tests
+      {:credo, "~> 1.7.0", only: [:dev, :test], runtime: false},
+
+      #  # only for test
+      {:mix_test_interactive, "~> 5.0", only: :dev, runtime: false},
+
+      # only for dev
+      {:dialyxir, "~> 1.3.0", only: :dev, runtime: false}
     ]
   end
 
