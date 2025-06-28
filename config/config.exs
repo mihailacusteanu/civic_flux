@@ -3,12 +3,13 @@
 #
 # This configuration file is loaded before any dependency and
 # is restricted to this project.
-
 # General application configuration
 import Config
 
 config :civic_flux,
-  generators: [timestamp_type: :utc_datetime]
+  generators: [timestamp_type: :utc_datetime],
+  ecto_repos: [CivicFlux.Repo],
+  event_stores: [CivicFlux.EventStore]
 
 # Configures the endpoint
 config :civic_flux, CivicFluxWeb.Endpoint,
@@ -60,11 +61,8 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-# Import environment specific config. This must remain at the bottom
-# of this file so it overrides the configuration defined above.
-import_config "#{config_env()}.exs"
-
-config :eventstore, EventStore.Storage,
+# EventStore & Commanded
+config :civic_flux, CivicFlux.EventStore,
   serializer: Commanded.Serialization.JsonSerializer,
   username: "postgres",
   password: "postgres",
@@ -73,3 +71,7 @@ config :eventstore, EventStore.Storage,
 
 config :commanded,
   event_store_adapter: Commanded.EventStore.Adapters.EventStore
+
+# Import environment specific config. This must remain at the bottom
+# of this file so it overrides the configuration defined above.
+import_config "#{config_env()}.exs"
