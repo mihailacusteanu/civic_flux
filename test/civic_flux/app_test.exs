@@ -5,7 +5,9 @@ defmodule CivicFlux.AppTest do
 
   alias CivicFlux.App
   alias CivicFlux.Domain.Commands.ReportIssue
-  alias CivicFlux.Domain.Events.IssueReported
+  alias CivicFlux.Domain.Events.LocationAddedToMap
+  alias CivicFlux.Domain.Events.LocationMarkedForAttention
+
 
   def unique_issue_id, do: "ISSUE-#{System.unique_integer([:positive])}"
 
@@ -49,6 +51,50 @@ defmodule CivicFlux.AppTest do
       }
 
       assert {:error, _reason} = App.dispatch(cmd)
+    end
+  end
+
+  describe "dispatch multiple ReportIssue commands" do
+    test "when number of dispatched commands is less than 10 and that only LocationAddedToMap events are emitted" do
+      Enum.each(1..9, fn i ->
+        cmd = %ReportIssue{
+          id: unique_issue_id(),
+          description: "Test issue #{i}",
+          location: "Test location #{i}"
+        }
+
+        assert :ok = App.dispatch(cmd)
+      end)
+      for i <- 1..9 do
+        wait_for_event(App, LocationAddedToMap, fn event ->
+          event.location == "Test location #{i}"
+        end)
+      end
+    end
+
+    test "when number of dispatched commands is 10 and that LocationMarkedForAttention event is emitted" do
+      location = "Same location #{System.unique_integer([:positive])}"
+
+      Enum.each(1..10, fn i ->
+        cmd = %ReportIssue{
+          id: unique_issue_id(),
+          description: "Test issue #{i}",
+          location: location
+        }
+
+        assert :ok = App.dispatch(cmd)
+        Process.sleep(10)
+      end)
+
+      for _ <- 1..9 do
+        wait_for_event(App, LocationAddedToMap, fn event ->
+          event.location == location
+        end)
+      end
+
+      wait_for_event(App, LocationMarkedForAttention, fn event ->
+        event.location == location
+      end)
     end
   end
 end
