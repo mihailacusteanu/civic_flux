@@ -30,10 +30,9 @@ defmodule CivicFlux.Domain.Aggregates.LocationAggregator do
     }]}
   end
 
-  def execute(%__MODULE__{}, %LocationNeedsAttention{location: location, reason: reason}) do
+  def execute(%__MODULE__{}, %LocationNeedsAttention{location: location}) do
     {:ok, [%LocationMarkedForAttention{
       location: location,
-      reason: reason,
       marked_at: DateTime.utc_now()
     }]}
   end
