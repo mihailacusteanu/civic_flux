@@ -41,6 +41,7 @@ defmodule CivicFlux.ProcessManagers.LocationIssueProcessManagerTest do
         description: "Initial issue at location",
         location: location
       }
+
       assert :ok = App.dispatch(cmd)
 
       wait_for_event(App, LocationAddedToMap, fn event ->

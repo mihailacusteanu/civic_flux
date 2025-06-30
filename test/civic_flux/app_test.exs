@@ -8,7 +8,6 @@ defmodule CivicFlux.AppTest do
   alias CivicFlux.Domain.Events.LocationAddedToMap
   alias CivicFlux.Domain.Events.LocationMarkedForAttention
 
-
   def unique_issue_id, do: "ISSUE-#{System.unique_integer([:positive])}"
 
   setup do
@@ -65,6 +64,7 @@ defmodule CivicFlux.AppTest do
 
         assert :ok = App.dispatch(cmd)
       end)
+
       for i <- 1..9 do
         wait_for_event(App, LocationAddedToMap, fn event ->
           event.location == "Test location #{i}"

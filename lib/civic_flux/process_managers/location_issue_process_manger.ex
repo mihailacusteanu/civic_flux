@@ -27,10 +27,12 @@ defmodule CivicFlux.ProcessManagers.LocationIssueProcessManager do
     if new_count < 10 do
       [%AddToMap{location: location}]
     else
-      [%LocationNeedsAttention{
-        location: location,
-        reason: "Threshold exceeded: #{new_count} issues reported at this location"
-      }]
+      [
+        %LocationNeedsAttention{
+          location: location,
+          reason: "Threshold exceeded: #{new_count} issues reported at this location"
+        }
+      ]
     end
   end
 
