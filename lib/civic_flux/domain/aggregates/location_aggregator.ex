@@ -13,9 +13,7 @@ defmodule CivicFlux.Domain.Aggregates.LocationAggregator do
   alias CivicFlux.Domain.Events.LocationAddedToMap
   alias CivicFlux.Domain.Events.LocationMarkedForAttention
 
-  # Command handlers
   def execute(%__MODULE__{id: nil}, %AddToMap{location: location}) do
-    # First time adding a location to the map
     {:ok, [%LocationAddedToMap{
       location: location,
       added_at: DateTime.utc_now()
@@ -23,7 +21,6 @@ defmodule CivicFlux.Domain.Aggregates.LocationAggregator do
   end
 
   def execute(%__MODULE__{}, %AddToMap{location: location}) do
-    # Already on the map, just acknowledge
     {:ok, [%LocationAddedToMap{
       location: location,
       added_at: DateTime.utc_now()
@@ -37,7 +34,6 @@ defmodule CivicFlux.Domain.Aggregates.LocationAggregator do
     }]}
   end
 
-  # State mutators
   def apply(%__MODULE__{} = state, %LocationAddedToMap{location: location}) do
     %__MODULE__{state |
       id: location,
